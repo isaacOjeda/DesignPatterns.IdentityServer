@@ -54,16 +54,6 @@ namespace DesignPatterns.IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
-            services.AddCors(options =>
-                {
-                    // this defines a CORS policy called "default"
-                    options.AddPolicy("default", policy =>
-                        {
-                            policy.WithOrigins("https://localhost:5005")
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-                        });
-                });
 
             // services.AddAuthentication();
         }
@@ -79,7 +69,6 @@ namespace DesignPatterns.IdentityServer
             app.UseStaticFiles();
             app.UseRouting();
 
-            app.UseCors("default");
             app.UseIdentityServer();
 
             app.UseAuthorization();
