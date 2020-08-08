@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
@@ -15,12 +16,18 @@ namespace DesignPatterns.IdentityServer
             {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile(),
+                new IdentityResource
+                {
+                    Name = "roles",
+                    DisplayName = "Roles",
+                    UserClaims = { JwtClaimTypes.Role }
+                }
             };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
-                new ApiScope("designpatterns.api"),
+                new ApiScope("designpatterns.api", new string[] { JwtClaimTypes.Role, "name", "email" }),
             };
 
         public static IEnumerable<Client> Clients =>
@@ -43,7 +50,8 @@ namespace DesignPatterns.IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
-                        "designpatterns.api"
+                        "designpatterns.api",
+                        "roles"
                     }
                 },
             };

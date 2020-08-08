@@ -22,7 +22,7 @@ namespace DesignPatterns.IdentityServer
             var services = new ServiceCollection();
             services.AddLogging();
             services.AddDbContext<ApplicationDbContext>(options =>
-               options.UseSqlite(connectionString));
+               options.UseSqlServer(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -36,6 +36,17 @@ namespace DesignPatterns.IdentityServer
                     context.Database.Migrate();
 
                     var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleMgr = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+                    var exampleRole = roleMgr.FindByNameAsync("Admin").Result;
+                    if (exampleRole == null)
+                    {
+                        var result = roleMgr.CreateAsync(new IdentityRole
+                        {
+                            Name = "Admin"
+                        }).Result;
+                    }
+
                     var alice = userMgr.FindByNameAsync("alice").Result;
                     if (alice == null)
                     {
@@ -61,6 +72,9 @@ namespace DesignPatterns.IdentityServer
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
+
+                        result = userMgr.AddToRoleAsync(alice, "Admin").Result;
+
                         Log.Debug("alice created");
                     }
                     else
@@ -94,6 +108,7 @@ namespace DesignPatterns.IdentityServer
                         {
                             throw new Exception(result.Errors.First().Description);
                         }
+
                         Log.Debug("bob created");
                     }
                     else
