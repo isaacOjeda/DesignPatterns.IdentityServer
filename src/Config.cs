@@ -24,10 +24,24 @@ namespace DesignPatterns.IdentityServer
                 }
             };
 
+        public static IEnumerable<ApiResource> ApiResources =>
+            new List<ApiResource>
+                {
+                    new ApiResource("designpatterns", "Main API")
+                    {
+                        Scopes = { "designpatterns.api" }
+                    },
+                    // new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
+                    // {
+                    //     Scopes = { IdentityServerConstants.LocalApi.ScopeName}
+                    // }
+                };
+
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
             {
                 new ApiScope("designpatterns.api", new string[] { JwtClaimTypes.Role, "name", "email" }),
+                new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
             };
 
         public static IEnumerable<Client> Clients =>
@@ -50,6 +64,7 @@ namespace DesignPatterns.IdentityServer
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.LocalApi.ScopeName,
                         "designpatterns.api",
                         "roles"
                     }
