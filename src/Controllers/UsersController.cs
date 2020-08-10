@@ -3,7 +3,7 @@ using IdentityServer4;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace src.Controllers
+namespace DesignPatterns.IdentityServer.Controllers
 {
     /// <summary>
     /// Api protegida por este mismo IDentity Server

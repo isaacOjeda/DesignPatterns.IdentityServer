@@ -7,7 +7,7 @@ using IdentityModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 
-namespace src
+namespace DesignPatterns.IdentityServer.Common
 {
     public class ClaimsFactory : UserClaimsPrincipalFactory<ApplicationUser>
     {

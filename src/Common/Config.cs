@@ -7,7 +7,7 @@ using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace DesignPatterns.IdentityServer
+namespace DesignPatterns.IdentityServer.Common
 {
     public static class Config
     {
@@ -69,6 +69,28 @@ namespace DesignPatterns.IdentityServer
                         "roles"
                     }
                 },
+                new Client
+                {
+                    ClientId = "webapp",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Code,
+
+                    // where to redirect to after login
+                    RedirectUris = { "http://localhost:5008/signin-oidc" },
+
+                    // where to redirect to after logout
+                    PostLogoutRedirectUris = { "http://localhost:5008/signout-callback-oidc" },
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.LocalApi.ScopeName,
+                        "designpatterns.api",
+                        "roles"
+                    }
+                }
             };
     }
 }
