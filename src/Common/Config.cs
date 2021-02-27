@@ -55,10 +55,10 @@ namespace DesignPatterns.IdentityServer.Common
                     AllowedGrantTypes = GrantTypes.Code,
                     RequireClientSecret = false,
 
-                    RedirectUris = { "https://localhost:5005/authentication/login-callback" },
-                    FrontChannelLogoutUri = "https://localhost:5005/authentication/logout-callback",
-                    PostLogoutRedirectUris = { "https://localhost:5005/authentication/logged-out" },
-                    AllowedCorsOrigins =     { "https://localhost:5005" },
+                    RedirectUris = { "https://localhost:50005/authentication/login-callback" },
+                    FrontChannelLogoutUri = "https://localhost:50005/authentication/logout-callback",
+                    PostLogoutRedirectUris = { "https://localhost:50005/authentication/logged-out" },
+                    AllowedCorsOrigins =     { "https://localhost:50005" },
 
                     AllowedScopes =
                     {
@@ -77,10 +77,10 @@ namespace DesignPatterns.IdentityServer.Common
                     AllowedGrantTypes = GrantTypes.Code,
 
                     // where to redirect to after login
-                    RedirectUris = { "http://localhost:5008/signin-oidc" },
+                    RedirectUris = { "https://localhost:50007/signin-oidc" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "http://localhost:5008/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:50007/signout-callback-oidc" },
 
                     AllowedScopes = new List<string>
                     {
