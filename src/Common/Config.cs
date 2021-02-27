@@ -77,10 +77,10 @@ namespace DesignPatterns.IdentityServer.Common
                     AllowedGrantTypes = GrantTypes.Code,
 
                     // where to redirect to after login
-                    RedirectUris = { "https://localhost:50007/signin-oidc" },
+                    RedirectUris = { "https://localhost:50008/signin-oidc" },
 
                     // where to redirect to after logout
-                    PostLogoutRedirectUris = { "https://localhost:50007/signout-callback-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:50008/signout-callback-oidc" },
 
                     AllowedScopes = new List<string>
                     {
