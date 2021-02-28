@@ -47,7 +47,7 @@ namespace DesignPatterns.IdentityServer
                 options.Events.RaiseSuccessEvents = true;
 
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
-                options.EmitStaticAudienceClaim = true;
+                options.EmitStaticAudienceClaim = true;                
             })
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)

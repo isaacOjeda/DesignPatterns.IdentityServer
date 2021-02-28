@@ -55,10 +55,10 @@ namespace DesignPatterns.IdentityServer.Common
                     AllowedGrantTypes = GrantTypes.Code,
                     RequireClientSecret = false,
 
-                    RedirectUris = { "https://localhost:50005/authentication/login-callback" },
-                    FrontChannelLogoutUri = "https://localhost:50005/authentication/logout-callback",
-                    PostLogoutRedirectUris = { "https://localhost:50005/authentication/logged-out" },
-                    AllowedCorsOrigins =     { "https://localhost:50005" },
+                    RedirectUris = { "http://localhost:50004/authentication/login-callback" },
+                    FrontChannelLogoutUri = "http://localhost:50004/authentication/logout-callback",
+                    PostLogoutRedirectUris = { "http://localhost:50004/authentication/logged-out" },
+                    AllowedCorsOrigins =     { "http://localhost:50004" },
 
                     AllowedScopes =
                     {
